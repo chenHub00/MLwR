@@ -74,3 +74,17 @@ aggregate(data = teens, female ~ cluster, mean)
 
 # mean number of friends by cluster
 aggregate(data = teens, friends ~ cluster, mean)
+
+#############################
+## Other clustering techniques
+## might be not appropriate for this data set?
+distances = dist(teens, method = "euclidean")
+
+# Hierarchical clustering
+clusterTeens = hclust(distances, method = "ward.D") 
+
+# Plot the dendrogram
+plot(clusterTeens)
+
+# Assign points to clusters
+clusterGroups = cutree(clusterTeens, k = 5)
